@@ -17,23 +17,49 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CarMake',
             fields=[
-                ('name', models.CharField(max_length=100, primary_key=True, serialize=False)),
+                ('name', models.CharField(
+                    max_length=100, primary_key=True, serialize=False)),
                 ('description', models.TextField()),
-                ('founded_year', models.IntegerField(blank=True, null=True)),
-                ('headquarters', models.CharField(blank=True, max_length=100, null=True)),
+                ('founded_year', models.IntegerField(
+                    blank=True, null=True)),
+                ('headquarters', models.CharField(
+                    blank=True, max_length=100, null=True)),
             ],
         ),
         migrations.CreateModel(
             name='CarModel',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True, serialize=False,
+                    verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
-                ('type', models.CharField(choices=[('SEDAN', 'Sedan'), ('SUV', 'SUV'), ('WAGON', 'Wagon'), ('COUPE', 'Coupe'), ('TRUCK', 'Truck'), ('VAN', 'Van'), ('HATCHBACK', 'Hatchback')], default='SUV', max_length=10)),
-                ('year', models.IntegerField(default=2023, validators=[django.core.validators.MaxValueValidator(2023), django.core.validators.MinValueValidator(2015)])),
-                ('engine', models.CharField(blank=True, max_length=50, null=True)),
-                ('color', models.CharField(blank=True, max_length=50, null=True)),
-                ('created_date', models.DateTimeField(default=django.utils.timezone.now)),
-                ('car_make', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='djangoapp.carmake')),
+                ('type', models.CharField(
+                    choices=[
+                        ('SEDAN', 'Sedan'),
+                        ('SUV', 'SUV'),
+                        ('WAGON', 'Wagon'),
+                        ('COUPE', 'Coupe'),
+                        ('TRUCK', 'Truck'),
+                        ('VAN', 'Van'),
+                        ('HATCHBACK', 'Hatchback')
+                    ],
+                    default='SUV',
+                    max_length=10)),
+                ('year', models.IntegerField(
+                    default=2023,
+                    validators=[
+                        django.core.validators.MaxValueValidator(2023),
+                        django.core.validators.MinValueValidator(2015)
+                    ])),
+                ('engine', models.CharField(
+                    blank=True, max_length=50, null=True)),
+                ('color', models.CharField(
+                    blank=True, max_length=50, null=True)),
+                ('created_date', models.DateTimeField(
+                    default=django.utils.timezone.now)),
+                ('car_make', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='djangoapp.carmake')),
             ],
         ),
     ]

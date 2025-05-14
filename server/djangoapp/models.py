@@ -10,7 +10,7 @@ class CarMake(models.Model):
     description = models.TextField()
     founded_year = models.IntegerField(null=True, blank=True)
     headquarters = models.CharField(max_length=100, null=True, blank=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -26,7 +26,7 @@ class CarModel(models.Model):
         ('VAN', 'Van'),
         ('HATCHBACK', 'Hatchback'),
     ]
-    
+
     # Many-To-One relationship to Car Make
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
@@ -41,6 +41,7 @@ class CarModel(models.Model):
     engine = models.CharField(max_length=50, null=True, blank=True)
     color = models.CharField(max_length=50, null=True, blank=True)
     created_date = models.DateTimeField(default=now)
-    
+
     def __str__(self):
         return f"{self.car_make.name} {self.name} ({self.year})"
+    
