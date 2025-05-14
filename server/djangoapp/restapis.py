@@ -33,7 +33,7 @@ def get_request(endpoint, **kwargs):
 
 # def analyze_review_sentiments(text):
 def analyze_review_sentiments(text):
-    request_url = "https://sentianalyzer.1vcww2om9dv9.us-south.codeengine.appdomain.cloud/"+"analyze/"+text
+    request_url = "https://sentianalyzer.1vfr719pui5x.us-south.codeengine.appdomain.cloud/"+"analyze/"+text
     try:
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)

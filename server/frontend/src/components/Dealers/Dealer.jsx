@@ -29,11 +29,16 @@ const Dealer = () => {
       method: "GET"
     });
     const retobj = await res.json();
+    console.log("retobj: ", retobj)
     
+    // if(retobj.status === 200) {
+    //   let dealerobjs = Array.from(retobj.dealer)
+    //   setDealer(dealerobjs[0])
+    // }
     if(retobj.status === 200) {
-      let dealerobjs = Array.from(retobj.dealer)
-      setDealer(dealerobjs[0])
-    }
+        // Directly set the dealer object, no need for Array.from
+        setDealer(retobj.dealer);
+      }
   }
 
   const get_reviews = async ()=>{
