@@ -9,9 +9,12 @@ from .models import CarMake, CarModel
 # CarModelInline class
 class CarModelInline(admin.StackedInline):
     model = CarModel
-    extra = 1  # Number of empty forms to display
-    fields = ('name', 'type', 'year', 'engine', 'color')  # Control displayed fields
-    ordering = ('-year',)  # Newest models first
+    # Number of empty forms to display
+    extra = 1  
+    #Control displayed fields
+    fields = ('name', 'type', 'year', 'engine', 'color') 
+    # Newest models first
+    ordering = ('-year',)
 
 
 # CarModelAdmin class
