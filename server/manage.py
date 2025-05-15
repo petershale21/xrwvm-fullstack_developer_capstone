@@ -7,7 +7,9 @@ from dotenv import load_dotenv
 from django.core.management import execute_from_command_line
 from django.contrib.auth import get_user_model
 
+
 load_dotenv(Path(__file__).parent / 'djangoproj' / '.env')
+
 
 def create_default_superuser():
     """Create superuser from environment variables if they exist."""
@@ -18,8 +20,14 @@ def create_default_superuser():
     password = os.getenv('DJANGO_SUPERUSER_PASSWORD')
     email = os.getenv('DJANGO_SUPERUSER_EMAIL', 'admin@example.com')
 
-    if username and password and not User.objects.filter(username=username).exists():
-        User.objects.create_superuser(username=username, email=email, password=password)
+    if username and password and not User.objects.filter(
+        username=username
+    ).exists():
+        User.objects.create_superuser(
+            username=username,
+            email=email,
+            password=password
+        )
         print(f"Superuser created: {username}")
 
 
@@ -32,7 +40,11 @@ def main():
         django.setup()
         
         # Only attempt superuser creation during specific commands
-        if len(sys.argv) > 1 and sys.argv[1] in ['runserver', 'migrate', 'shell']:
+        if len(sys.argv) > 1 and sys.argv[1] in [
+            'runserver', 
+            'migrate', 
+            'shell'
+        ]:
             try:
                 create_default_superuser()
             except django.db.utils.OperationalError:
