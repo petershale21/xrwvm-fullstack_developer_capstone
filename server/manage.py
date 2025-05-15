@@ -14,7 +14,7 @@ load_dotenv(Path(__file__).parent / 'djangoproj' / '.env')
 def create_default_superuser():
     """Create superuser from environment variables if they exist."""
     User = get_user_model()
-    
+
     # Get credentials from environment variables
     username = os.getenv('DJANGO_SUPERUSER_USERNAME')
     password = os.getenv('DJANGO_SUPERUSER_PASSWORD')
@@ -34,15 +34,15 @@ def create_default_superuser():
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoproj.settings')
-    
+
     try:
         import django
         django.setup()
-        
+
         # Only attempt superuser creation during specific commands
         if len(sys.argv) > 1 and sys.argv[1] in [
-            'runserver', 
-            'migrate', 
+            'runserver',
+            'migrate',
             'shell'
         ]:
             try:
@@ -50,7 +50,7 @@ def main():
             except django.db.utils.OperationalError:
                 # Database isn't ready yet
                 pass
-                
+
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
